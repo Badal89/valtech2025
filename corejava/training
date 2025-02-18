@@ -1,0 +1,13 @@
+create table employee(
+id int primary key,
+name varchar(50),
+age int,
+salary float,
+gender varchar(10),
+level int,experience int
+);
+
+select * from employee;
+
+
+
