@@ -12,37 +12,37 @@
 <form action="employees" method="post">
  <tr>
   <td>Id</td>
- <td> <input type="text" name="id" value="${emp.id}" /></td>
+ <td> <input type="text" name="id" value="${emps.id}" /></td>
  </tr>
  
   <tr>
   <td>Name</td>
-  <td><input type="text" name="name" value="${emp.name}"/></td>
+  <td><input type="text" name="name" value="${emps.name}"/></td>
  </tr>
  
   <tr>
   <td>Age</td>
- <td> <input type="text" name="age" value="${emp.age}"/></td>
+ <td> <input type="text" name="age" value="${emps.age}"/></td>
  </tr>
  
   <tr>
   <td>Gender</td>
-  <td><input type="text" name="gender" value="${emp.gender}"/></td>
+  <td><input type="text" name="gender" value="${emps.gender}"/></td>
  </tr>
  
   <tr>
   <td>Salary</td>
-  <td><input type="text" name="salary" value="${emp.salary}"/></td>
+  <td><input type="text" name="salary" value="${emps.salary}"/></td>
  </tr>
  
   <tr>
   <td>Experience</td>
-  <td><input type="text" name="experience" value="${emp.experience}"/></td>
+  <td><input type="text" name="experience" value="${emps.experience}"/></td>
  </tr>
  
   <tr>
   <td>Level</td>
-  <td><input type="text" name="level" value="${emp.level}"/></td>
+  <td><input type="text" name="level" value="${emps.level}"/></td>
  </tr>
  
   <tr>

@@ -22,7 +22,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	private ServletContext sce;
 	private Properties p;
 
-    public EmployeeDAOImpl(ServletContext sce, Properties p) {
+    public EmployeeDAOImpl(ServletContext sce) {
 		this.sce=sce;
 		this.p=p;
 	}

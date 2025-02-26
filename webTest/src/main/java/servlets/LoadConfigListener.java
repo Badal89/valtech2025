@@ -11,12 +11,12 @@ public class LoadConfigListener implements ServletContextListener {
     	System.out.println("Loading...Config....Done..");
     	System.out.println("Creating Database Connection Pool..");
     	ServletContext application=sce.getServletContext();
-    	
-    	
-    }
-      
+      }   
       @Override
     public void contextDestroyed(ServletContextEvent sce) {
     	System.out.println("Closing all Database Connection in the Connection Pool...");
     }
 }
+
+
+

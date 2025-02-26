@@ -47,7 +47,7 @@ public class DatabaseConfigLis implements ServletContextListener {
         		}
             properties.setProperty("user",properties.getProperty("jdbc.username"));
             properties.setProperty("password", "postgres");
-            empdao=new EmployeeDAOImpl(context,properties);
+//            empdao=new EmployeeDAOImpl(context,properties);
    
             context.setAttribute("emp", empdao);
             

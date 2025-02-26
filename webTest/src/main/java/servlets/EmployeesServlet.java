@@ -16,22 +16,17 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns="/employees")
 public class EmployeesServlet extends HttpServlet {
-	
-
 	private EmployeeDAO dao;
-	
 	public void init(ServletConfig config) throws ServletException {
 		dao= (EmployeeDAO)config.getServletContext().getAttribute("emp");
-	}
+     }
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String operation=req.getParameter("operation");
-		
+	  String operation=req.getParameter("operation");
 		if("cancel".equals(operation)) {
 			req.setAttribute("emps",dao.getAll());
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
-			return;
-			
+			return;	
 		}
 		Employee emp=Employee.builder().id(Integer.parseInt(req.getParameter("id")))
 				.name(req.getParameter("name"))
@@ -41,23 +36,17 @@ public class EmployeesServlet extends HttpServlet {
                 .experience(Integer.parseInt(req.getParameter("experience")))
                 .level(Integer.parseInt(req.getParameter("level"))).build();
 		if("Save".equals(operation)) {
-			
-                    
-                   dao.save(emp);
-                   req.setAttribute("emps",dao.getAll());
-       			   req.getRequestDispatcher("employees.jsp").forward(req, resp);
-       			return;
-                  
+			dao.save(emp);
+              req.setAttribute("emps",dao.getAll());
+       	      req.getRequestDispatcher("employees.jsp").forward(req, resp);
+       		  return;       
 		}
 		if("Update".equals(operation)) {
-			
-            
             dao.update(emp);
             req.setAttribute("emps",dao.getAll());
 			   req.getRequestDispatcher("employees.jsp").forward(req, resp);
-			return;
-           
-	}
+			return;      
+	   }
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -71,7 +60,6 @@ public class EmployeesServlet extends HttpServlet {
 	        req.getRequestDispatcher("editEmployee.jsp").forward(req, resp);
 	        return;
 	    }
-
 	    if ("Delete".equals(operation)) {
 	        int id = Integer.parseInt(req.getParameter("id"));
 	        dao.delete(id);
@@ -79,16 +67,11 @@ public class EmployeesServlet extends HttpServlet {
 	        req.getRequestDispatcher("employees.jsp").forward(req, resp);
 	        return;
 	    }
-
 	    if ("new".equals(operation)) {
 	        req.setAttribute("mode", "Save");
 	        req.getRequestDispatcher("editEmployee.jsp").forward(req, resp);
 	        return;
 	    }
-
-	    
-	    
-	    // Handling Search Functionality
 	    String searchBy = req.getParameter("searchBy");
 	    String searchValue = req.getParameter("searchValue");
 	    String comparison = req.getParameter("comparison");
@@ -100,15 +83,12 @@ public class EmployeesServlet extends HttpServlet {
 	    } else {
 	        employees = dao.getAll();
 	    }
-
-	    // Handling Sorting Functionality
 	    String sortBy = req.getParameter("sortBy");
-	    String sortOrder = req.getParameter("sortOrder"); // "asc" or "desc"
+	    String sortOrder = req.getParameter("sortOrder"); 
 
 	    if (sortBy != null && sortOrder != null) {
 	        employees = dao.sortEmployees(sortBy, sortOrder);
 	    }
-
 	    req.setAttribute("emps", employees);
 	    req.setAttribute("sortBy", sortBy);
 	    req.setAttribute("sortOrder", sortOrder);
