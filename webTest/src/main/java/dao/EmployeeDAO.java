@@ -17,6 +17,5 @@ public interface EmployeeDAO {
     List<Employee> sortEmployees(String sortBy, String sortOrder) ;
 
     
-    List<Employee> searchEmployees(String searchBy, String searchValue, String comparison); 
+    List<Employee> searchEmployees(String searchBy, String searchValue, String comparison); // New method for search functionality
 }
-

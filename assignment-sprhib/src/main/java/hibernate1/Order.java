@@ -32,6 +32,8 @@ public class Order {
         joinColumns = @JoinColumn(name = "order_id"),
         inverseJoinColumns = @JoinColumn(name = "item_id"))
 	private Set<Item> items;
+
+	private String status;
 	
 	
 	public Order() {

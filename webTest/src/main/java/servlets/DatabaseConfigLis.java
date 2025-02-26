@@ -25,14 +25,13 @@ public class DatabaseConfigLis implements ServletContextListener {
 		ServletContext context = sce.getServletContext();
 		Properties properties = new Properties();
 		try (InputStream input = DatabaseConfigLis.class.getClassLoader().getResourceAsStream("db.properties")) {
-            // Load the properties file into the Properties object
+            
             if (input == null) {
                 System.out.println("Sorry, unable to find db.properties");
                 return;
             }
             properties.load(input);
-//            System.out.println(properties.get);
-            // Retrieve and set database connection properties in ServletContext
+
             context.setAttribute("db.url", properties.getProperty("jdbc.url"));
             context.setAttribute("db.username", properties.getProperty("jdbc.username"));
             context.setAttribute("db.password", properties.getProperty("jdbc.password"));

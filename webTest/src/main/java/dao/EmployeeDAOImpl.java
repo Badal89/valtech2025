@@ -18,35 +18,24 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 //        }
 //    }
 
-
 	private ServletContext sce;
 	private Properties p;
+	public EmployeeDAOImpl(ServletContext sce,Properties p){
+        this.sce = sce;
+        this.p=p;
+    }
 
-    public EmployeeDAOImpl(ServletContext sce) {
-		this.sce=sce;
-		this.p=p;
-	}
-    
+
 
 	public ServletContext getSce() {
 		return sce;
 	}
-
-
+ 
+ 
 	public void setSce(ServletContext sce) {
 		this.sce = sce;
-	}
-
-
-	public Properties getP() {
-		return p;
-	}
-
-
-	public void setP(Properties p) {
-		this.p = p;
-	}
-	
+ 
+	}	
 	
 
 
@@ -259,3 +248,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 
 }
+
+
+        
