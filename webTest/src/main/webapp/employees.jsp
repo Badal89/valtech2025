@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="dao.Employee"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,6 +12,8 @@
 </head>
 <body>
 
+
+
 <% String currentSortBy = request.getParameter("sortBy"); %>
 <% String currentSortOrder = request.getParameter("sortOrder"); %>
 <% String newSortOrder = "asc".equals(currentSortOrder) ? "desc" : "asc"; %>
@@ -20,9 +23,7 @@
 
 <tr>
 
-
-
-            <th><a href="?sortBy=id&sortOrder=<%= newSortOrder %>">ID</a></th>
+			 <th><a href="?sortBy=id&sortOrder=<%= newSortOrder %>">ID</a></th>
             <th><a href="?sortBy=name&sortOrder=<%= newSortOrder %>">Name</a></th>
             <th><a href="?sortBy=age&sortOrder=<%= newSortOrder %>">Age</a></th>
             <th><a href="?sortBy=gender&sortOrder=<%= newSortOrder %>">Gender</a></th>

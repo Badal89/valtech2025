@@ -1,6 +1,7 @@
 package ass_trl;
 
 
+ 
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
@@ -8,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import javax.persistence.Id;
-
-import javax.persistence.SequenceGenerator;
  
 @Entity
 
@@ -17,9 +16,7 @@ public class Item {
  
     @Id
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq")
-
-    @SequenceGenerator(name = "item_seq", sequenceName = "item_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
 
     private int id;
 

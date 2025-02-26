@@ -33,60 +33,69 @@ public class Order {
         inverseJoinColumns = @JoinColumn(name = "item_id"))
 	private Set<Item> items;
 
-	private String status;
+
 	
 	
-	public Order() {
+	public Order(){
 		
 	}
-	
 
-	public Order(int id, Customer1 customer, String status, Set<Item> items) {
-		this.id = id;
-		this.customer = customer;
-		this.status = status;
-		this.items = items;
-	}
+
+
 
 	public int getId() {
 		return id;
 	}
 
+
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
+
 
 	public Customer1 getCustomer() {
 		return customer;
 	}
 
+
+
+
 	public void setCustomer(Customer1 customer) {
 		this.customer = customer;
 	}
 
-	public String getStatus() {
-		return status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+
 
 	public Set<Item> getItems() {
 		return items;
 	}
 
+
+
+
 	public void setItems(Set<Item> items) {
+		this.items = items;
+	}
+
+
+
+
+	public Order(int id, Customer1 customer, Set<Item> items) {
+		this.id = id;
+		this.customer = customer;
 		this.items = items;
 	}
 	
 	
 	
 	
-	
-	
-	
+}
 	
 	
 
-}
+	
