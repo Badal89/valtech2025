@@ -24,7 +24,7 @@ public class EmployeesServlet extends HttpServlet {
 	
 	@Override
 	public void init() throws ServletException {
-	    ServletContext context = getServletContext(); // Get ServletContext
+	    ServletContext context = getServletContext(); 
 	    Properties properties = new Properties();
 	    try (InputStream input = context.getResourceAsStream("/WEB-INF/classes/db.properties")) {
 	        if (input != null) {

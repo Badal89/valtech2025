@@ -21,39 +21,38 @@ public class Employee implements Comparable<Employee> {
 	
 	private Gender gender;
 	
-	
-	
-	
-	private static List<Employee> allEmp=new ArrayList<Employee>();
+
+
+	private static List<Employee> getAllEmp=new ArrayList<Employee>();
 	private static Map<Gender,List<Employee>> getEmpoyeeMap=new HashMap<Gender,List<Employee>>();
 	
 	public static Map<Gender,List<Employee>> getEmployeeByGender(){
-		return allEmp.stream().collect(Collectors.groupingBy(e->e.gender));
+		return getAllEmp.stream().collect(Collectors.groupingBy(e->e.gender));
 	}
 	
 	
 	public static double getEmployeeByLevel(int level) {
-		List<Employee> emp=allEmp.stream().filter(e->e.level==level).collect(Collectors.toList());
+		List<Employee> emp=getAllEmp.stream().filter(e->e.level==level).collect(Collectors.toList());
 		System.out.println(emp);
-		return allEmp.stream().filter(e->e.level==level).mapToDouble(Employee::getSalary).sum()	;
+		return getAllEmp.stream().filter(e->e.level==level).mapToDouble(Employee::getSalary).sum()	;
 		}	
 	
 	public static double getEmployeeByGender(Gender gender) {
-		List<Employee> emp=allEmp.stream().filter(e->e.gender.equals(gender)).collect(Collectors.toList());
+		List<Employee> emp=getAllEmp.stream().filter(e->e.gender.equals(gender)).collect(Collectors.toList());
 		System.out.println(emp);
-		return allEmp.stream().filter(e->e.gender.equals(gender)).mapToDouble(Employee::getSalary).sum()	;
+		return getAllEmp.stream().filter(e->e.gender.equals(gender)).mapToDouble(Employee::getSalary).sum()	;
 		}	
 	
 	public static double getEmployeeByName(String name) {
-		List<Employee> emp=allEmp.stream().filter(e->e.name.equals(name)).collect(Collectors.toList());
+		List<Employee> emp=getAllEmp.stream().filter(e->e.name.equals(name)).collect(Collectors.toList());
 		System.out.println(emp);
-		return allEmp.stream().filter(e->e.name.equals(name)).mapToDouble(Employee::getSalary).sum()	;
+		return getAllEmp.stream().filter(e->e.name.equals(name)).mapToDouble(Employee::getSalary).sum()	;
 		}	
 	
 	public static double getEmployeeByGenderLevel(int level,Gender gender) {
-		List<Employee> emp=allEmp.stream().filter(e->e.gender.equals(gender) && e.level==level).collect(Collectors.toList());
+		List<Employee> emp=getAllEmp.stream().filter(e->e.gender.equals(gender) && e.level==level).collect(Collectors.toList());
 		System.out.println(emp);
-		return allEmp.stream().filter(e->e.gender.equals(gender) && e.level==level).mapToDouble(Employee::getSalary).sum()	;
+		return getAllEmp.stream().filter(e->e.gender.equals(gender) && e.level==level).mapToDouble(Employee::getSalary).sum()	;
 		}	
 	
 	
@@ -253,6 +252,8 @@ public class Employee implements Comparable<Employee> {
 
 		
 	  }
+	  
+	  
 
 	@Override
 	public int compareTo(Employee o) {
@@ -279,18 +280,6 @@ public class Employee implements Comparable<Employee> {
 	}
 	
  
-
-	
-	
-	
-	
-	
-	
-	
-		
-	
-	
-	
 	
 
 }
