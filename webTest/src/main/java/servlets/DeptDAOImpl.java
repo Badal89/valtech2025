@@ -2,10 +2,8 @@ package servlets;
 
 import java.sql.*;
 import java.util.*;
-
 import dao.Employee;
 import jakarta.servlet.ServletContext;
-
 public class DeptDAOImpl implements DeptDAO {
     private ServletContext sce;
     private Properties p;
@@ -14,15 +12,12 @@ public class DeptDAOImpl implements DeptDAO {
         this.sce = sce;
         this.p = p;
     }
-
     public ServletContext getSce() {
         return sce;
     }
-
     public void setSce(ServletContext sce) {
         this.sce = sce;
     }
-
     private Connection getConnection() throws SQLException {
         System.out.println("DB URL: " + sce.getAttribute("db.url"));
         System.out.println("DB Username: " + sce.getAttribute("db.username"));
@@ -34,13 +29,11 @@ public class DeptDAOImpl implements DeptDAO {
             (String) sce.getAttribute("db.password")
         );
     }
-
-
     @Override
     public void save(Dept dept) {
         String query = "INSERT INTO depts (deptid, deptname, deptlocation) VALUES (?, ?, ?)";
         try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+            PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, dept.getId());
             stmt.setString(2, dept.getName());
             stmt.setString(3, dept.getLocation());
@@ -65,7 +58,6 @@ public class DeptDAOImpl implements DeptDAO {
             e.printStackTrace();
         }
     }
-
     @Override
     public void delete(int id) {
         String query = "DELETE FROM depts WHERE deptid = ?";
@@ -101,8 +93,7 @@ public class DeptDAOImpl implements DeptDAO {
         return null;
     }
 
-
-    @Override
+   @Override
     public Set<Dept> getAll() {
         Set<Dept> departments = new HashSet<>();
         String query = "SELECT * FROM depts";
@@ -141,9 +132,6 @@ public class DeptDAOImpl implements DeptDAO {
         return null;
     }
 
-
-
-
     @Override
     public Dept last() {
         String query = "SELECT deptid, deptname, deptlocation FROM depts ORDER BY deptid DESC LIMIT 1";
@@ -152,7 +140,6 @@ public class DeptDAOImpl implements DeptDAO {
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
-
             if (rs.next()) {
                 dept = new Dept(rs.getInt("deptid"), rs.getString("deptname"), rs.getString("deptlocation"));
                 System.out.println("Last Department Found: ID=" + dept.getId() + ", Name=" + dept.getName());
@@ -165,23 +152,20 @@ public class DeptDAOImpl implements DeptDAO {
         return dept;
     }
 
-
     @Override
     public Dept next(int id) {
         String query = "SELECT deptid, deptname, deptlocation FROM depts WHERE deptid > ? ORDER BY deptid ASC LIMIT 1";
         return getDeptFromQueryWithId(id, query);
     }
-
     @Override
     public Dept previous(int id) {
         String query = "SELECT deptid, deptname, deptlocation FROM depts WHERE deptid < ? ORDER BY deptid DESC LIMIT 1";
         return getDeptFromQueryWithId(id, query);
     }
-
     @Override
     public List<Employee> getEmployeesByDept(int deptId) {
         List<Employee> employees = new ArrayList<>();
-        String query = "SELECT * FROM employee WHERE deptid = ?";  // 🔥 Fixed table name!
+        String query = "SELECT * FROM employee WHERE deptid = ?";  // Fixed table name!
 
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -213,7 +197,6 @@ public class DeptDAOImpl implements DeptDAO {
         if (employees.isEmpty()) {
             System.out.println("No employees found for department ID: " + deptId);
         }
-
         return employees;
     }
 

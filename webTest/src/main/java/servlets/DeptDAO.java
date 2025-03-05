@@ -11,7 +11,7 @@ public interface DeptDAO {
     Dept next(int id);
     Dept previous(int id);
     
-    void save(Dept dept);  // Already exists
+    void save(Dept dept); 
     void update(Dept dept);
     void delete(int id);
     Dept getDept(int id);

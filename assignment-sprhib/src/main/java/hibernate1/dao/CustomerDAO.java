@@ -1,17 +1,13 @@
 package hibernate1.dao;
 
 import java.util.List;
-
-import hibernate1.Customer1;
+import hibernate1.Customer;
 
 public interface CustomerDAO {
-	 void save(Customer1 c);
-		
-		void update(Customer1 c);
-		
-		void delete(int id);
-		
-		Customer1 get(int id);
-		
-		List<Customer1> getAll();
+	void addCustomer(Customer customer);
+	Customer getCustomer(int id);
+	List<Customer> getAll();
+	void updateCustomer(Customer customer);
+	void deleteCustomer(int id);
+
 }
