@@ -39,7 +39,6 @@ public class DeptServlet extends HttpServlet {
         deptDAO = new DeptDAOImpl(context, properties);
     }
 
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Dept currentDept = deptDAO.first();
@@ -75,17 +74,20 @@ public class DeptServlet extends HttpServlet {
             if (previousDept != null) {
                 current = previousDept;
             }
+            
         } else if ("Next".equals(operation)) {
             Dept nextDept = deptDAO.next(current.getId());
             if (nextDept != null) {
                 current = nextDept;
             }
+            
         } else if ("DeleteDept".equals(operation)) {
             if (current != null) {
                 deptDAO.delete(current.getId());
                 System.out.println("Deleted department: " + current.getName());
                 current = deptDAO.first(); // Go to first dept after delete
             }
+            
         } else if ("AddDept".equals(operation)) {
             int id = Integer.parseInt(req.getParameter("deptid"));
             String name = req.getParameter("deptname");
@@ -93,7 +95,8 @@ public class DeptServlet extends HttpServlet {
             Dept newDept = new Dept(id, name, location);
             deptDAO.save(newDept);
             System.out.println("Added new department: " + name);
-            current = newDept; // Show newly added dept
+            current = newDept;      // Show newly added dept
+            
         } else if ("UpdateDept".equals(operation)) {
             int id = Integer.parseInt(req.getParameter("deptid"));
             String name = req.getParameter("deptname");

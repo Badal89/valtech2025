@@ -12,17 +12,13 @@
 </head>
 <body>
 
-
-
 <% String currentSortBy = request.getParameter("sortBy"); %>
 <% String currentSortOrder = request.getParameter("sortOrder"); %>
 <% String newSortOrder = "asc".equals(currentSortOrder) ? "desc" : "asc"; %>
 
-
 <table>
 
 <tr>
-
 			 <th><a href="?sortBy=id&sortOrder=<%= newSortOrder %>">ID</a></th>
             <th><a href="?sortBy=name&sortOrder=<%= newSortOrder %>">Name</a></th>
             <th><a href="?sortBy=age&sortOrder=<%= newSortOrder %>">Age</a></th>

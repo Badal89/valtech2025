@@ -92,7 +92,7 @@ public class DeptDAOImpl implements DeptDAO {
         }
         return null;
     }
-
+ // Get all departments
    @Override
     public Set<Dept> getAll() {
         Set<Dept> departments = new HashSet<>();
@@ -134,7 +134,7 @@ public class DeptDAOImpl implements DeptDAO {
 
     @Override
     public Dept last() {
-        String query = "SELECT deptid, deptname, deptlocation FROM depts ORDER BY deptid DESC LIMIT 1";
+       String query = "SELECT deptid, deptname, deptlocation FROM depts ORDER BY deptid DESC LIMIT 1";
         
         Dept dept = null;
         try (Connection conn = getConnection();
@@ -150,6 +150,7 @@ public class DeptDAOImpl implements DeptDAO {
             e.printStackTrace();
         }
         return dept;
+       
     }
 
     @Override
@@ -200,20 +201,7 @@ public class DeptDAOImpl implements DeptDAO {
         return employees;
     }
 
-    private Dept getDeptFromQuery(String query) {
-        Dept dept = null;
-        try (Connection conn = getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.next()) {
-                dept = new Dept(rs.getInt("id"), rs.getString("name"), rs.getString("location"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return dept;
-    }
-
+ // Helper method to get department from a query using a specific ID
     private Dept getDeptFromQueryWithId(int id, String query) {
         Dept dept = null;
         try (Connection conn = getConnection();

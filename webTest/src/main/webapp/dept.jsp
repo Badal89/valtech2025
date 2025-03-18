@@ -77,7 +77,7 @@
         </button>
     </form>
 
-    <!-- Hidden Form for Adding/Updating Department -->
+    
     <div id="deptForm" style="display: none;">
         <h3>Department Form</h3>
         <form action="depts" method="post">

@@ -1,8 +1,11 @@
 package servlets;
+
+
 public class Dept {
-private int id;
-private String name;
-private String location;
+	
+  private int id;
+  private String name;
+  private String location;
 
 
 public Dept() {
@@ -32,6 +35,7 @@ public String getLocation() {
 public void setLocation(String location) {
 	this.location = location;
 }
+
 @Override
 public String toString() {
 	return "Dept [id=" + id + ", name=" + name + ", location=" + location + "]";

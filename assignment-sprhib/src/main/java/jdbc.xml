@@ -7,7 +7,7 @@
 <p:bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		  
 			<p:property name="driverClassName" value="org.postgresql.Driver"></p:property>
-			<p:property name="url" value="jdbc:postgresql://localhost:5432/training"></p:property>
+			<p:property name="url" value="jdbc:postgresql://localhost:5432/inventory"></p:property>
 			<p:property name="username" value="postgres"></p:property>
 			<p:property name="password" value="postgres"></p:property>
 		

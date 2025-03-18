@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import servlets.Dept;
+
 public class Employee implements Comparable<Employee> {
 	
 	public enum Gender{
@@ -18,56 +20,14 @@ public class Employee implements Comparable<Employee> {
 	private int level;
 	private float salary;
 	private int experience;
-	
 	private Gender gender;
-	
-	
-	
-	
-	private static List<Employee> allEmp=new ArrayList<Employee>();
-	private static Map<Gender,List<Employee>> getEmpoyeeMap=new HashMap<Gender,List<Employee>>();
-	
-	public static Map<Gender,List<Employee>> getEmployeeByGender(){
-		return allEmp.stream().collect(Collectors.groupingBy(e->e.gender));
-	}
-	
-	
-	public static double getEmployeeByLevel(int level) {
-		List<Employee> emp=allEmp.stream().filter(e->e.level==level).collect(Collectors.toList());
-		System.out.println(emp);
-		return allEmp.stream().filter(e->e.level==level).mapToDouble(Employee::getSalary).sum()	;
-		}	
-	
-	public static double getEmployeeByGender(Gender gender) {
-		List<Employee> emp=allEmp.stream().filter(e->e.gender.equals(gender)).collect(Collectors.toList());
-		System.out.println(emp);
-		return allEmp.stream().filter(e->e.gender.equals(gender)).mapToDouble(Employee::getSalary).sum()	;
-		}	
-	
-	public static double getEmployeeByName(String name) {
-		List<Employee> emp=allEmp.stream().filter(e->e.name.equals(name)).collect(Collectors.toList());
-		System.out.println(emp);
-		return allEmp.stream().filter(e->e.name.equals(name)).mapToDouble(Employee::getSalary).sum()	;
-		}	
-	
-	public static double getEmployeeByGenderLevel(int level,Gender gender) {
-		List<Employee> emp=allEmp.stream().filter(e->e.gender.equals(gender) && e.level==level).collect(Collectors.toList());
-		System.out.println(emp);
-		return allEmp.stream().filter(e->e.gender.equals(gender) && e.level==level).mapToDouble(Employee::getSalary).sum()	;
-		}	
-	
-	
-	
-	
+	private Dept deptId;
 	
 	public Employee() {
 		
 	}
 
-
-
 	public Employee(String name, long id, int age, int level, float salary, int experience, Gender gender) {
-	
 		this.name = name;
 		this.id = id;
 		this.age = age;
@@ -77,9 +37,6 @@ public class Employee implements Comparable<Employee> {
 		this.gender = gender;
 	}
 	
-	
-	
-
 
 	public String getName() {
 		return name;
@@ -163,10 +120,6 @@ public class Employee implements Comparable<Employee> {
 		this.gender = gender;
 	}
 
-
-
-	
-	
 
 
 	@Override

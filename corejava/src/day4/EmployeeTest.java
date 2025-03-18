@@ -9,6 +9,8 @@ import java.util.Collections;
 import java.util.List;
 
 class EmployeeTest {
+	
+	
 
     @Test
     void testHashCode() {
@@ -29,8 +31,6 @@ class EmployeeTest {
         assertTrue(emp1.equals(emp2));
         assertFalse(emp1.equals(emp3));
     }
-
-  
 
     @Test
     void testAll() {
