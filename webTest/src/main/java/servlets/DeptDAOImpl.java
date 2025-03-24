@@ -19,9 +19,9 @@ public class DeptDAOImpl implements DeptDAO {
         this.sce = sce;
     }
     private Connection getConnection() throws SQLException {
-        System.out.println("DB URL: " + sce.getAttribute("db.url"));
-        System.out.println("DB Username: " + sce.getAttribute("db.username"));
-        System.out.println("DB Password: " + sce.getAttribute("db.password"));
+//        System.out.println("DB URL: " + sce.getAttribute("db.url"));
+//        System.out.println("DB Username: " + sce.getAttribute("db.username"));
+//        System.out.println("DB Password: " + sce.getAttribute("db.password"));
 
         return DriverManager.getConnection(
             (String) sce.getAttribute("db.url"),
@@ -166,7 +166,7 @@ public class DeptDAOImpl implements DeptDAO {
     @Override
     public List<Employee> getEmployeesByDept(int deptId) {
         List<Employee> employees = new ArrayList<>();
-        String query = "SELECT * FROM employee WHERE deptid = ?";  // Fixed table name!
+        String query = "SELECT * FROM employee WHERE deptid = ?";  
 
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
@@ -12,38 +12,40 @@
 <form action="employees" method="post">
  <tr>
   <td>Id</td>
- <td> <input type="text" name="id" value="${emps.id}" /></td>
+ <td> <input type="text" name="id" value="${emp.id}" /></td>
  </tr>
  
   <tr>
   <td>Name</td>
-  <td><input type="text" name="name" value="${emps.name}"/></td>
+  <td><input type="text" name="name" value="${emp.name}"/></td>
  </tr>
  
   <tr>
   <td>Age</td>
- <td> <input type="text" name="age" value="${emps.age}"/></td>
+ <td> <input type="text" name="age" value="${emp.age}"/></td>
  </tr>
  
   <tr>
   <td>Gender</td>
-  <td><input type="text" name="gender" value="${emps.gender}"/></td>
+  <td><input type="text" name="gender" value="${emp.gender}"/></td>
  </tr>
  
   <tr>
   <td>Salary</td>
-  <td><input type="text" name="salary" value="${emps.salary}"/></td>
+  <td><input type="text" name="salary" value="${emp.salary}"/></td>
  </tr>
  
   <tr>
   <td>Experience</td>
-  <td><input type="text" name="experience" value="${emps.experience}"/></td>
+  <td><input type="text" name="experience" value="${emp.experience}"/></td>
  </tr>
  
   <tr>
   <td>Level</td>
-  <td><input type="text" name="level" value="${emps.level}"/></td>
+  <td><input type="text" name="level" value="${emp.level}"/></td>
  </tr>
+ 
+
  
   <tr>
   
@@ -61,3 +63,5 @@
 </form>
 </body>
 </html>
+
+

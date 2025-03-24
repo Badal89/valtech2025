@@ -10,7 +10,7 @@ import java.util.List;
 public class QuestionClient {
 
     private String QUESTION_SERVICE_URL = "http://localhost:9020/api/v1/questions";
-    private RestTemplate restTemplate = new RestTemplate();
+    RestTemplate restTemplate = new RestTemplate();
 
     public List<Integer> getQuestionsForQuiz(String topic, long numQuestions) {
         String url = QUESTION_SERVICE_URL + "/generate?topicName=" + topic + "&numQuestions=" + numQuestions;

@@ -49,7 +49,8 @@ public class EmployeesServlet extends HttpServlet {
 		}
 		Employee emp=Employee.builder().id(Integer.parseInt(req.getParameter("id")))
 				.name(req.getParameter("name"))
-				.age(Integer.parseInt(req.getParameter("age")))
+				//.age(Integer.parseInt(req.getParameter("age")))
+				 .age(Integer.parseInt(req.getParameter("age")))
 				.gender(Gender.valueOf(req.getParameter("gender").toUpperCase()))
                 .salary(Integer.parseInt(req.getParameter("salary")))
                 .experience(Integer.parseInt(req.getParameter("experience")))
@@ -79,6 +80,8 @@ public class EmployeesServlet extends HttpServlet {
 	        req.getRequestDispatcher("editEmployee.jsp").forward(req, resp);
 	        return;
 	    }
+	    
+	   
 	    if ("Delete".equals(operation)) {
 	        int id = Integer.parseInt(req.getParameter("id"));
 	        dao.delete(id);

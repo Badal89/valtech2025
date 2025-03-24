@@ -42,7 +42,8 @@
   <td>${e.experience}</td>
   <td>${e.level}</td>
   <td>
-     <a href="employees?operation=Update&id=${e.id}">Update</a>
+     <%-- <a href="employees?operation=Update&id=${e.id}">Update</a> --%>
+      <a href="employees?operation=Update&id=${e.id}">Update</a>
      <a href="employees?operation=Delete&id=${e.id}">Delete</a>
   </td>
   
@@ -106,6 +107,8 @@
 	  </tr>
 	  
    <% }%>
+   
+
    
 <form action="employees" method="GET">
     <label for="searchBy">Search By:</label>

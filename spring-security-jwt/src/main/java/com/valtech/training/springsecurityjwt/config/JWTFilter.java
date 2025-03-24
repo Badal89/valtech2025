@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@Component
+//@Component
 public class JWTFilter extends OncePerRequestFilter {
 	
 	private JWTHelper jwtHelper;

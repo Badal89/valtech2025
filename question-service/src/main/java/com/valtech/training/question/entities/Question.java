@@ -105,25 +105,12 @@ public class Question {
 		this.difficultyLevel = difficultyLevel;
 	}
 
-
-
 	public String getTopic() {
 		return topic;
 	}
 
-
-
 	public void setTopic(String topic) {
 		this.topic = topic;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

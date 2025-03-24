@@ -77,7 +77,7 @@ public class LeaveServiceImpl implements LeaveService {
 		leave.setLeaveStatus(LeaveStatus.APPLIED);
 		leave.checkLeaveApplicationAndUpdateStatus(leaveMasterRepo.findByEmployeeId(vo.employeeId()));
 		leave=leaveRepo.save(leave);
-		//send notification to the manager
+		//send notification to the manager   
 		return LeaveVO.from(leave);
 	}
 	
@@ -90,12 +90,10 @@ public class LeaveServiceImpl implements LeaveService {
 	public LeaveVO saveOrUpdateLeave(LeaveVO vo) {
 		Leave leave=vo.to();
 		leave=leaveRepo.save(leave);
-		return LeaveVO.from(leave);
-		
+		return LeaveVO.from(leave);	
 	}
 	
-	
-	
+		
 	@Override
 	public LeaveVO getLeaves(long id) {
 		return LeaveVO.from(leaveRepo.getReferenceById(id));

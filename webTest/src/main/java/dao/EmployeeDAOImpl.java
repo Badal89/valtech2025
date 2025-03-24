@@ -25,8 +25,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         this.p=p;
     }
 
-
-
 	public ServletContext getSce() {
 		return sce;
 	}
@@ -42,7 +40,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	private Connection getConnection() throws SQLException {
 //        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/training", "postgres", "postgres");
 //    
-		System.out.println(sce.getAttribute("db.password"));
+		//System.out.println(sce.getAttribute("db.password"));
 		String pass=(String)sce.getAttribute("db.password");
 		System.out.println(pass);
 		return DriverManager.getConnection((String)sce.getAttribute("db.url"),(String)sce.getAttribute("db.username"),(String)sce.getAttribute("db.password"));
@@ -51,7 +49,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void save(Employee e) {
-        String query = "INSERT INTO EMPLOYEE (ID, NAME, AGE, GENDER, SALARY, EXPERIENCE, LEVEL) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO EMPLOYEE (NAME, AGE, GENDER, SALARY, EXPERIENCE, LEVEL,ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
             
@@ -76,13 +74,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     private void setValuesToPreparedStatement(Employee e, PreparedStatement ps) throws SQLException {
-        ps.setLong(1, e.getId());
-        ps.setString(2, e.getName());
-        ps.setInt(3, e.getAge());
-        ps.setString(4, e.getGender().name());
-        ps.setFloat(5, e.getSalary());
-        ps.setInt(6, e.getExperience());
-        ps.setInt(7, e.getLevel());
+        ps.setString(1, e.getName());
+        ps.setInt(2, e.getAge());
+        ps.setString(3, e.getGender().name());
+        ps.setFloat(4, e.getSalary());
+        ps.setInt(5, e.getExperience());
+        ps.setInt(6, e.getLevel());
+        ps.setLong(7, e.getId());
+
     }
 
     @Override
@@ -92,7 +91,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
              PreparedStatement ps = conn.prepareStatement(query)) {
             
             setValuesToPreparedStatement(e, ps);
-            ps.setLong(7, e.getId());
 
             int rowAffected = ps.executeUpdate();
             System.out.println("Rows Updated = " + rowAffected);
@@ -196,10 +194,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
 
-            // Set parameter values correctly
+            // Set parameter values
             if (searchBy.matches("id|age|level|experience|salary")) {
                 try {
-                    ps.setInt(1, Integer.parseInt(searchValue));  // Convert String to Integer safely
+                    ps.setInt(1, Integer.parseInt(searchValue));  // Convert String to Integer 
                 } catch (NumberFormatException e) {
                     throw new RuntimeException("Invalid numeric value for " + searchBy + ": " + searchValue);
                 }

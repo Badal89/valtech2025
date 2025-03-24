@@ -34,7 +34,7 @@
         <p><strong>Name:</strong> <%= dept.getName() %></p>
         <p><strong>Location:</strong> <%= dept.getLocation() %></p>
     <% } else { %>
-        <p style="color: red;">No department found.</p>
+        <p style="color: pink;">No department found.</p>
     <% } %>
 
     <h3>Employees in this Department</h3>

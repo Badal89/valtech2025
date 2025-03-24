@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@Component
+//@Component
 public class LoginFilter extends OncePerRequestFilter {
 	
 	private UserDetailsService userDetailsService;

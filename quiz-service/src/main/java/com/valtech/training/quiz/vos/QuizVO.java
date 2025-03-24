@@ -13,7 +13,7 @@ public record QuizVO(long id,String quizTitle, List<Integer> questionIds) {
 
     // Convert VO to Entity
     public Quiz to() {
-        return new Quiz(this.id, this.quizTitle, this.questionIds);
+        return new Quiz(id, quizTitle, questionIds);
     }
 
 }

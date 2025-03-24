@@ -28,7 +28,7 @@ public class ResultController {
         return resultService.getResultsByUser(userName);
     }
 
-    @GetMapping("/quiz/{quizId}")
+    @GetMapping("/quiz/{quizId}") 
     public List<QuizResultVO> getResultsByQuiz(@PathVariable Long quizId) {
         return resultService.getResultsByQuiz(quizId);
     }

@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 @Service
 public class ResultClient {
 
-    private final RestTemplate restTemplate = new RestTemplate();
-    private final String RESULT_SERVICE_URL = "http://localhost:9060/api/v1/results";
+    RestTemplate restTemplate = new RestTemplate();
+    private String RESULT_SERVICE_URL = "http://localhost:9060/api/v1/results";
     
     public QuizResultVO saveResult(Long quizId, String userName, int score) {
         String url = RESULT_SERVICE_URL + "/save?quizId=" + quizId + "&userName=" + userName + "&score=" + score;

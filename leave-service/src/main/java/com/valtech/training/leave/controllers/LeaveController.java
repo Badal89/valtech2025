@@ -23,7 +23,6 @@ public class LeaveController {
 	@Autowired
 	private LeaveService leaveService;
 
-	
 	@PostMapping("/approve")
 	public LeaveVO approveLeave(@RequestBody ApproveLeaveVO vo) {
 		return leaveService.approveLeave(vo);
@@ -33,24 +32,20 @@ public class LeaveController {
 	public LeaveVO applyLeave(@RequestBody LeaveVO vo) {
 		return leaveService.applyLeave(vo);
 	}
-	
-	
+		
 	@GetMapping("/{id}")
 	public LeaveVO getLeave(@PathVariable("id") long id) {
 		LeaveVO vo= leaveService.getLeaves(id);
 		EmployeeVO man=leaveService.getManager(vo.employeeId());
 		System.out.println("Emp="+vo.employeeId()+"Man="+man.id());
 		return vo;
-	}
-	
-	
+	}	
 	
 	@GetMapping("/")
 	public List<LeaveVO> getAllLeaves(){
 		return leaveService.getAllLeaves();
 	}
-	
-	
+		
 	@PostMapping("/")
 	public LeaveVO createLeave(@RequestBody   LeaveVO vo) {
 		return leaveService.saveOrUpdateLeave(vo);
@@ -60,7 +55,5 @@ public class LeaveController {
 	public LeaveVO updateLeave( @PathVariable("id") long id,   @RequestBody   LeaveVO vo) {
 		return leaveService.update(vo,id);
 	}
-	
-	
-
+		
 }
