@@ -4,99 +4,95 @@ import java.util.*;
 
 public class MobileRank {
 
-    // Inner class to store mobile number and its rank
-    static class Mobile {
+    static class MobileRanking {
         String number;
         int rank;
 
-        Mobile(String number, int rank) {
+        MobileRanking(String number, int rank) {
             this.number = number;
             this.rank = rank;
         }
     }
 
-    // Method to calculate rank based on certain conditions
-    private static int calculateRank(String number) {
+    private static int calcRank(String num) {
         int rank = 0;
 
-        // Check if the number is in ascending order
+        
         boolean isAscending = true;
-        for (int i = 1; i < number.length(); i++) {
-            if (number.charAt(i) < number.charAt(i - 1)) {
+        for (int i = 1; i < num.length(); i++) {
+            if (num.charAt(i) < num.charAt(i - 1)) {
                 isAscending = false;
                 break;
             }
         }
-        if (isAscending) rank += 30;  // Highest rank for ascending order
+        if (isAscending) rank += 30; 
 
-        // Check if the number is in descending order
+        
         boolean isDescending = true;
-        for (int i = 1; i < number.length(); i++) {
-            if (number.charAt(i) > number.charAt(i - 1)) {
+        for (int i = 1; i < num.length(); i++) {
+            if (num.charAt(i) > num.charAt(i - 1)) {
                 isDescending = false;
                 break;
             }
         }
-        if (isDescending) rank += 20;  // Second highest rank for descending order
+        if (isDescending) rank += 20; 
 
-        // Count repeated digits
-        Set<Character> uniqueDigits = new HashSet<>();
-        int repeatedDigitsCount = 0;
-        for (char digit : number.toCharArray()) {
-            if (!uniqueDigits.add(digit)) {
-                repeatedDigitsCount++;
+       
+        Set<Character> digits = new HashSet<>();
+        int repeatedCount = 0;
+        for (char c : num.toCharArray()) {
+            if (!digits.add(c)) {
+                repeatedCount++;
             }
         }
-        rank += (repeatedDigitsCount * 5);  // Add 5 for each repeated digit
+        if (repeatedCount > 0) rank += (repeatedCount * 5); 
 
         return rank;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the number of mobile numbers:");
-        int totalMobiles = scanner.nextInt();
-        scanner.nextLine();  // Consume the leftover newline
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of mobiles:");
+        int n = sc.nextInt();
+        sc.nextLine(); 
 
-        List<String> mobileNumbers = new ArrayList<>();
-        for (int i = 0; i < totalMobiles; i++) {
-            System.out.println("Enter mobile number " + (i + 1) + ":");
-            String mobileNumber = scanner.nextLine();
+        List<String> mobiles = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter the mobile " + (i + 1) + ":");
+            String number = sc.nextLine();
 
-            // Validate mobile number (must be exactly 10 digits)
-            if (mobileNumber.length() != 10 || !mobileNumber.matches("\\d{10}")) {
+            
+            if (number.length() != 10 || !number.matches("\\d{10}")) {
                 System.out.println("Invalid mobile number! It must be exactly 10 digits. Skipping this number.");
                 continue;
             }
 
-            mobileNumbers.add(mobileNumber);
+            mobiles.add(number);
         }
 
-        // List to store Mobile objects (mobile number and its rank)
-        List<Mobile> rankedMobiles = new ArrayList<>();
-        for (String number : mobileNumbers) {
-            int rank = calculateRank(number);
-            rankedMobiles.add(new Mobile(number, rank));
+        List<MobileRanking> rankNumber = new ArrayList<>();
+        for (String num : mobiles) {
+            int rank = calcRank(num);
+            rankNumber.add(new MobileRanking(num, rank));
         }
 
-        // Sort mobiles by rank (highest rank first), then by number (ascending order)
-        rankedMobiles.sort((a, b) -> {
+       
+        rankNumber.sort((a, b) -> {
             if (a.rank != b.rank) {
-                return Integer.compare(b.rank, a.rank);  // Higher rank comes first
+                return Integer.compare(b.rank, a.rank); 
             } else {
-                return a.number.compareTo(b.number);  // If ranks are the same, sort by number
+                return a.number.compareTo(b.number);
             }
         });
 
-        // Display the sorted mobile numbers with their ranks
-        System.out.println("\nMobile Numbers Ranked:");
-        int currentRank = 1;
-        for (Mobile mobile : rankedMobiles) {
-            System.out.println("Rank: " + currentRank + " | Mobile Number: " + mobile.number);
-            currentRank++;
+        
+        System.out.println("\nMobiles based on rank:");
+        int rank = 1;
+        for (MobileRanking mr : rankNumber) {
+            System.out.println("Mobile Number: " + mr.number + " | Rank: " + rank);
+            rank++;
         }
 
-        scanner.close();
+        sc.close();
     }
 }
-
